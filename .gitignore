@@ -2,11 +2,17 @@
 *.exe
 *.o
 *.out
+*.obj
 
 # IDE 配置
 .vscode/
 .idea/
+.vs/
+*.vcxproj.user
 
 # 系统文件
 .DS_Store
 Thumbs.db
+
+# 调试日志
+*.log
