@@ -1,0 +1,72 @@
+<!-- 
+🖐️ 实操
+写一个包含以下功能的简单 HTML 页面（单个 .html 文件即可）：
+
+- 一个输入框（<input>）
+- 一个"添加"按钮
+- 一个"清空"按钮
+- 一个有序列表（<ol>）
+
+功能：
+- 点击"添加"时，把输入框的内容作为一个新的 <li> 追加到列表中
+- 点击"清空"时，删除所有 <li>
+- 输入框为空时点击"添加"，用 alert 提示"内容不能为空"
+
+要求：
+- 使用 const/let 而不是 var
+- 使用 addEventListener 而不是 onclick 属性
+- 使用 document.querySelector 选择元素
+ -->
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Day 8 实操</title>
+</head>
+
+<body>
+<h2>清单核对</h2>
+    <input type="text" id="itemInput" placeholder="输入些什么吧">
+    <button id="addBtn">添加</button>
+    <button id="clearBtn">清空</button>
+    <ol id="itemList"></ol>
+
+<script>
+    // 1. 获取元素
+    const input = document.querySelector('#itemInput');
+    const addBtn = document.querySelector('#addBtn');
+    const clearBtn = document.querySelector('#clearBtn');
+    const list = document.querySelector('#itemList');
+
+    // 2. "添加"按钮的事件处理
+    addBtn.addEventListener('click', function() {
+        // 获取输入框的值，去除首尾空格
+        const text = input.value.trim();
+        
+        // 判断是否为空
+        if (text === '') {
+            alert('内容不能为空');
+            return;  // 提前结束
+        }
+        
+        // 创建新的 <li> 元素
+        const newItem = document.createElement('li');
+        newItem.textContent = text;
+        
+        // 把新元素添加到列表中
+        list.appendChild(newItem);
+        
+        // 清空输入框
+        input.value = '';
+    });
+
+    // 3. "清空"按钮的事件处理
+    clearBtn.addEventListener('click', function() {
+        list.innerHTML = '';  // 清空列表的所有内容
+    });
+</script>
+
+</body>
+
+</html>
